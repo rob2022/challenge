@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/form-schema', function (Request $request) {
+    $formSchemaRepository = new \App\Repositories\FormSchemaRepository();
+
+    return $formSchemaRepository->getSchema();
+});

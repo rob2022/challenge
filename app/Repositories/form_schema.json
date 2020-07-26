@@ -1,0 +1,93 @@
+{
+	"meta": {
+		"alias": "MemberSignupForm",
+		"action": "/api/member",
+		"method": "POST"
+	},
+	"schema": {
+		"props": {
+			"name": {
+				"type": "String",
+				"validation": [
+					{
+						"type": "regex",
+						"value": "/^[a-z ,.'-]+$/i",
+						"error_message": "Unexpected input"
+					},
+					{
+						"type": "length",
+						"value": {
+							"min": 4,
+							"max": 255
+						},
+						"error_message": "Name must be at least 4 characters and no more than 255"
+					}
+				]
+			},
+			"address": {
+				"type": "String",
+				"validation": [
+					{
+						"type": "regex",
+						"value": "/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})/g",
+						"error_message": "Failed official UK address validation rules"
+					}
+				]
+			},
+			"nickname": {
+				"type": "String"
+			},
+			"age": {
+				"type": "Number"
+			}
+		},
+		"actions": {
+			"submit": {
+				"action": "submit"
+			},
+			"cancel": {
+				"action": "clear"
+			}
+		},
+		"required": [
+			"name",
+			"address"
+		]
+	},
+	"layout": {
+		"elements": [
+			{
+				"type": "text",
+				"label": "Full Name",
+				"schema_ref": "#/props/name"
+			},
+			{
+				"type": "text",
+				"label": "How are you otherwise known",
+				"placeholder": "e.g. Mac",
+				"schema_ref": "#/props/nickname"
+			},
+			{
+				"type": "textarea",
+				"label": "Home Address",
+				"schema_ref": "#/props/address"
+			},
+			
+			{
+				"type": "number",
+				"label": "How old are you ?",
+				"schema_ref": "#/props/age"
+			},
+			{
+				"type": "button",
+				"title": "Submit!",
+				"schema_ref": "#/actions/submit"
+			},
+			{
+				"type": "button",
+				"title": "Cancel",
+				"schema_ref": "#/actions/cancel"
+			}
+		]
+	}
+}
