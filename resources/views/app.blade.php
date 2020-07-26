@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -64,8 +65,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <div id="app"></div>
-        </div>
+        <div id="app"></div>
+        <script src="/js/app.js"></script>
     </body>
 </html>
